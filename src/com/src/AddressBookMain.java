@@ -43,8 +43,6 @@ public class AddressBookMain {
 
         addressBook.displayContacts();
 
-
-
         System.out.println("Enter firstname to edit contact");
         addressBook.editContact(sc.nextLine());
 
@@ -55,11 +53,6 @@ public class AddressBookMain {
         addressBook.deleteContact(deleteName);
 
         addressBook.displayContacts();
-
-
-
-
-
 
     }
 }
