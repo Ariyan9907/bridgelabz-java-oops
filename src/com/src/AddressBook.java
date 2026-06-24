@@ -46,4 +46,21 @@ public class AddressBook {
         }
     }
 
+    public void deleteContact(String firstName){
+        for(int i=0;i<contacts.size();i++){
+            if((contacts.get(i).getFirstName()).equalsIgnoreCase(firstName)){
+                contacts.remove(i);
+                System.out.println("Contact deleted succefully");
+                return;
+            }
+        }
+        System.out.println("Contact Not Found");
+    }
+
+    public void displayContacts(){
+        for(Contact contact:contacts){
+            System.out.println(contact);
+        }
+    }
+
 }
