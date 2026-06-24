@@ -25,6 +25,7 @@ public class StockPortfolio {
             System.out.println("No Of Shares:"+stock.getNumberOfShares());
             System.out.println("Shares Price:"+stock.calculateStockValue());
             System.out.println("Total Value"+calculateTotalValue());
+            System.out.println("");
         }
     }
 
