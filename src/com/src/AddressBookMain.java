@@ -29,6 +29,12 @@ public class AddressBookMain {
         addressBook.addContact(contact);
         System.out.println("Contact Added Successfully");
 
+        System.out.println("Enter firstname to edit contact");
+        addressBook.editContact(sc.nextLine());
+
+
+
+
 
 
     }
