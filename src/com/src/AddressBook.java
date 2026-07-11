@@ -9,7 +9,22 @@ public class AddressBook {
 
     //add contact in addressbook
     public void addContact(Contact contact){
+        if(isDuplicate(contact.getFirstName(),contact.getLastName())){
+            System.out.println("Contact already exists");
+            return;
+        }
         contacts.add(contact);
+        System.out.println("Contact added successfully.");
+    }
+
+    //check first and last name duplicate
+    public boolean isDuplicate(String firstName,String lastName){
+        for(Contact contact:contacts){
+            if((contact.getFirstName()).equalsIgnoreCase(firstName)&&(contact.getLastName()).equalsIgnoreCase(lastName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     //edit contact from adressbook
