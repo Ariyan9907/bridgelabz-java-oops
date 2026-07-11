@@ -1,41 +1,103 @@
-# UC6 - Add Multiple Address Books
+# UC7 - Prevent Duplicate Contacts
+
+## Overview
+
+This Use Case enhances the Address Book Management System by preventing duplicate contacts from being added to an address book.
+
+A contact is considered a duplicate if another contact already exists with the same **First Name** and **Last Name** (case-insensitive).
+
+---
 
 ## Objective
-Refactor the Address Book System to support multiple Address Books, where each Address Book has a unique name.
 
-## Features
-- Create multiple Address Books.
-- Each Address Book has a unique name.
-- Store Address Books using a `HashMap<String, AddressBook>`.
-- Open an existing Address Book by its name.
-- Add multiple contacts to a selected Address Book.
-- Display all available Address Books.
+* Prevent duplicate entries in the address book.
+* Improve data consistency.
+* Demonstrate searching within an `ArrayList` before inserting data.
 
-## Classes Used
-- Contact
-- AddressBook
-- AddressBookSystem
-- AddressBookMain
+---
 
-## Collection Used
-- `HashMap<String, AddressBook>`
-- `ArrayList<Contact>`
+## Features Implemented
 
-## Sample Flow
-1. Create Address Book (Friends)
-2. Create Address Book (Family)
-3. Open Friends Address Book
-4. Add Contacts
-5. Display Contacts
-6. Display all Address Books
+* Add a new contact.
+* Check for duplicate contacts before insertion.
+* Compare first name and last name using `equalsIgnoreCase()`.
+* Display an appropriate message when a duplicate contact is detected.
+* Add the contact only if it is unique.
 
-## Concepts Used
-- Object-Oriented Programming
-- HashMap
-- ArrayList
-- Encapsulation
-- Composition
-- Java Collections Framework
+---
+
+## Implementation Details
+
+### Method Added
+
+```java
+public boolean isDuplicate(String firstName, String lastName)
+```
+
+This method iterates through the contact list and checks whether a contact with the same first and last name already exists.
+
+### Updated Method
+
+```java
+public void addContact(Contact contact)
+```
+
+Before adding the contact, the method calls `isDuplicate()`.
+
+* If a duplicate is found:
+
+    * Displays **"Contact already exists."**
+    * Does not add the contact.
+* Otherwise:
+
+    * Adds the contact successfully.
+
+---
+
+## Technologies Used
+
+* Java
+* ArrayList
+* Object-Oriented Programming (OOP)
+* Collections Framework
+
+---
+
+## Learning Outcomes
+
+* Searching elements in an `ArrayList`
+* Encapsulation
+* Object comparison
+* Preventing duplicate records
+* Using helper methods to improve code readability
+
+---
+
+## Expected Output
+
+### Valid Contact
+
+```
+Contact added successfully.
+```
+
+### Duplicate Contact
+
+```
+Contact already exists.
+```
+
+---
+
+## Future Enhancements
+
+* Prevent duplicate phone numbers.
+* Prevent duplicate email addresses.
+* Store contacts using a `HashMap` for faster lookups.
+* Search contacts by multiple fields.
+
+---
 
 ## Author
-Aryan Pujari
+
+**Aryan Pujari**
