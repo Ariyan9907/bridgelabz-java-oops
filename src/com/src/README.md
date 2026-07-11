@@ -1,6 +1,6 @@
 # UC7 - Prevent Duplicate Contacts
 
-## Overview
+## Overviews
 
 This Use Case enhances the Address Book Management System by preventing duplicate contacts from being added to an address book.
 
