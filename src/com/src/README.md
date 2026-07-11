@@ -1,51 +1,46 @@
-# UC9 - View Persons by City or State
+# UC10 - Count Contacts by City and State
 
 ## Overview
 
-This Use Case enhances the Address Book Management System by organizing contacts based on their **City** and **State** using `HashMap`.
+This Use Case extends the Address Book Management System by counting the number of contacts available in a specific **City** or **State**.
 
-Each city and state maintains a list of contacts, making it easy to view all persons belonging to a particular location.
+Instead of displaying all contacts, the application displays the total number of contacts associated with the given city or state.
 
 ---
 
 ## Objective
 
-* Store contacts according to their city.
-* Store contacts according to their state.
-* View all persons belonging to a specific city.
-* View all persons belonging to a specific state.
+* Count contacts by city.
+* Count contacts by state.
+* Display the total number of contacts.
+* Handle cases where no contacts exist for the given city or state.
 
 ---
 
 ## Features Implemented
 
-* Created a City Dictionary using `HashMap<String, ArrayList<Contact>>`.
-* Created a State Dictionary using `HashMap<String, ArrayList<Contact>>`.
-* Automatically stores every new contact in both maps.
-* View all contacts by city.
-* View all contacts by state.
+* Count contacts stored in the City Dictionary.
+* Count contacts stored in the State Dictionary.
+* Display the total number of contacts using `ArrayList.size()`.
+* Display an appropriate message when no contacts are found.
 
 ---
 
 ## Implementation Details
 
-### Data Structures Used
+### Methods Added
 
 ```java
-HashMap<String, ArrayList<Contact>> cityMap;
-
-HashMap<String, ArrayList<Contact>> stateMap;
+public void countByCity(String city)
 ```
 
-### Logic
+Counts the number of contacts available in the specified city.
 
-* When a new contact is added:
+```java
+public void countByState(String state)
+```
 
-    * Add the contact to the `contacts` list.
-    * Check whether the city already exists in `cityMap`.
-    * If not, create a new `ArrayList`.
-    * Add the contact to that city's list.
-    * Repeat the same process for `stateMap`.
+Counts the number of contacts available in the specified state.
 
 ---
 
@@ -61,35 +56,33 @@ HashMap<String, ArrayList<Contact>> stateMap;
 
 ## Learning Outcomes
 
-* Working with `HashMap`
-* Mapping one key to multiple values
-* Using `containsKey()`, `put()`, and `get()`
-* Organizing data efficiently
-* Improving data retrieval
+* Using `HashMap` to organize data.
+* Retrieving values using `get()`.
+* Checking keys using `containsKey()`.
+* Counting elements using `ArrayList.size()`.
+* Understanding constant-time lookup operations.
 
 ---
 
 ## Expected Output
 
-### View Persons by City
+### Count by City
 
 ```text
-Persons in Belagavi
+Number of contacts in Belagavi : 2
 
-Aryan Pujari
-Rahul Patil
+Number of contacts in Pune : 1
 ```
 
-### View Persons by State
+### Count by State
 
 ```text
-Persons in Karnataka
+Number of contacts in Karnataka : 2
 
-Aryan Pujari
-Rahul Patil
+Number of contacts in Maharashtra : 1
 ```
 
-### No Contacts Found
+### Invalid Input
 
 ```text
 No contacts found in city: Goa
@@ -99,19 +92,22 @@ No contacts found in city: Goa
 
 ## Time Complexity
 
-* Adding a contact to City Map: **O(1)** (Average)
-* Adding a contact to State Map: **O(1)** (Average)
-* Viewing persons by city: **O(n)** (where *n* is the number of contacts in that city)
-* Viewing persons by state: **O(n)** (where *n* is the number of contacts in that state)
+| Operation     | Time Complexity |
+| ------------- | --------------- |
+| containsKey() | O(1)            |
+| get()         | O(1)            |
+| size()        | O(1)            |
+
+Overall Time Complexity: **O(1)**
 
 ---
 
 ## Future Enhancements
 
-* Count persons by city and state.
-* Sort contacts alphabetically.
-* Store contacts in multiple address books.
-* Implement searching using Java Streams.
+* Display counts for all cities.
+* Display counts for all states.
+* Sort cities and states alphabetically.
+* Generate summary reports for the address book.
 
 ---
 

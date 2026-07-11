@@ -23,12 +23,12 @@ public class TestIndivisualFeature {
                 "411001", "9999999999",
                 "amit@gmail.com"));
 
-        System.out.println("Persons in Belagavi:");
-        addressBook.viewCoctactsByCity("Belagavi");
+        addressBook.countContactByCity("Belagavi");
 
-        System.out.println();
+        addressBook.countContactByCity("Pune");
 
-        System.out.println("Persons in Karnataka:");
-        addressBook.viewCoctactsByState("Karnataka");
+        addressBook.countContactBystate("Karnataka");
+
+        addressBook.countContactBystate("Maharashtra");
     }
 }

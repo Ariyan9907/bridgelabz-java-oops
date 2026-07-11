@@ -151,6 +151,26 @@ public class AddressBook {
         }
     }
 
+    public void countContactByCity(String city){
+        if((cityMap.get(city)==null)||(cityMap.isEmpty())){
+            System.out.println("No contacts available in this city");
+            return;
+        }
+
+        int n=cityMap.get(city).size();
+        System.out.println(n+" contancts in the "+city);
+    }
+
+    public void countContactBystate(String state){
+        if((cityMap.get(state)==null)||(cityMap.isEmpty())){
+            System.out.println("No contacts available in this state");
+            return;
+        }
+
+        int n=cityMap.get(state).size();
+        System.out.println(n+" contancts in the "+state);
+    }
+
 
     //display contact from adress book
     public void displayContacts(){
