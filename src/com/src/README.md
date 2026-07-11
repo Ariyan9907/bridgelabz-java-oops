@@ -1,110 +1,117 @@
-# UC8 - Search Person by City or State
+# UC9 - View Persons by City or State
 
 ## Overview
 
-This Use Case extends the Address Book Management System by allowing users to search for contacts based on their **City** or **State**.
+This Use Case enhances the Address Book Management System by organizing contacts based on their **City** and **State** using `HashMap`.
 
-The application traverses the contact list and displays all matching contacts. If no matching records are found, an appropriate message is displayed.
+Each city and state maintains a list of contacts, making it easy to view all persons belonging to a particular location.
 
 ---
 
 ## Objective
 
-* Search contacts by city.
-* Search contacts by state.
-* Display all matching contacts.
-* Handle cases where no matching contacts exist.
+* Store contacts according to their city.
+* Store contacts according to their state.
+* View all persons belonging to a specific city.
+* View all persons belonging to a specific state.
 
 ---
 
 ## Features Implemented
 
-* Search contacts using city name.
-* Search contacts using state name.
-* Case-insensitive search using `equalsIgnoreCase()`.
-* Display all matching contacts.
-* Display a message when no contacts are found.
+* Created a City Dictionary using `HashMap<String, ArrayList<Contact>>`.
+* Created a State Dictionary using `HashMap<String, ArrayList<Contact>>`.
+* Automatically stores every new contact in both maps.
+* View all contacts by city.
+* View all contacts by state.
 
 ---
 
 ## Implementation Details
 
-### Method Added
+### Data Structures Used
 
 ```java
-public void searchByCity(String city)
+HashMap<String, ArrayList<Contact>> cityMap;
+
+HashMap<String, ArrayList<Contact>> stateMap;
 ```
 
-Searches the contact list and displays every contact whose city matches the given city name.
+### Logic
 
-### Method Added
+* When a new contact is added:
 
-```java
-public void searchByState(String state)
-```
-
-Searches the contact list and displays every contact whose state matches the given state name.
+    * Add the contact to the `contacts` list.
+    * Check whether the city already exists in `cityMap`.
+    * If not, create a new `ArrayList`.
+    * Add the contact to that city's list.
+    * Repeat the same process for `stateMap`.
 
 ---
 
 ## Technologies Used
 
 * Java
+* HashMap
 * ArrayList
-* Object-Oriented Programming (OOP)
 * Collections Framework
+* Object-Oriented Programming (OOP)
 
 ---
 
 ## Learning Outcomes
 
-* Traversing collections using enhanced for-loops.
-* Filtering objects based on conditions.
-* Performing case-insensitive string comparisons.
-* Building reusable search methods.
+* Working with `HashMap`
+* Mapping one key to multiple values
+* Using `containsKey()`, `put()`, and `get()`
+* Organizing data efficiently
+* Improving data retrieval
 
 ---
 
 ## Expected Output
 
-### Search by City
+### View Persons by City
 
 ```text
-Search By City
+Persons in Belagavi
 
 Aryan Pujari
 Rahul Patil
 ```
 
-### Search by State
+### View Persons by State
 
 ```text
-Search By State
+Persons in Karnataka
 
-Amit Sharma
+Aryan Pujari
+Rahul Patil
 ```
 
-### No Matching Contact
+### No Contacts Found
 
 ```text
-No contact found in city: Delhi
+No contacts found in city: Goa
 ```
 
 ---
 
 ## Time Complexity
 
-* **Search by City:** O(n)
-* **Search by State:** O(n)
+* Adding a contact to City Map: **O(1)** (Average)
+* Adding a contact to State Map: **O(1)** (Average)
+* Viewing persons by city: **O(n)** (where *n* is the number of contacts in that city)
+* Viewing persons by state: **O(n)** (where *n* is the number of contacts in that state)
 
 ---
 
 ## Future Enhancements
 
-* Search using partial names.
-* Search using phone number or email.
-* Maintain separate city and state dictionaries using `HashMap` for faster lookups.
-* Implement search using Java Streams.
+* Count persons by city and state.
+* Sort contacts alphabetically.
+* Store contacts in multiple address books.
+* Implement searching using Java Streams.
 
 ---
 

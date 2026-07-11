@@ -1,10 +1,15 @@
 package com.src;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
+
     ArrayList<Contact> contacts = new ArrayList<>();
+    HashMap<String,ArrayList<Contact>> cityMap=new HashMap<>();
+    HashMap<String,ArrayList<Contact>> stateMap=new HashMap<>();
+
     Scanner sc=new Scanner(System.in);
 
     //add contact in addressbook
@@ -14,6 +19,19 @@ public class AddressBook {
             return;
         }
         contacts.add(contact);
+
+        if(!cityMap.containsKey(contact.getCity())){
+            cityMap.put(contact.getCity(),new ArrayList<>());
+        }
+        ArrayList<Contact> cityContacts = cityMap.get(contact.getCity());
+        cityContacts.add(contact);
+
+
+        if(!stateMap.containsKey(contact.getState())){
+            cityMap.put(contact.getState(),new ArrayList<>());
+        }
+        ArrayList<Contact> stateContacts = cityMap.get(contact.getState());
+        stateContacts.add(contact);
         System.out.println("Contact added successfully.");
     }
 
@@ -108,6 +126,31 @@ public class AddressBook {
         }
 
     }
+
+    public void viewCoctactsByCity(String city){
+        ArrayList<Contact> cityContacts = cityMap.get(city);
+        if (cityContacts == null || cityContacts.isEmpty()) {
+            System.out.println("No contacts found in city: " + city);
+            return;
+        }
+
+        for (Contact contact : cityContacts) {
+            System.out.println(contact);
+        }
+    }
+
+    public void viewCoctactsByState(String state){
+        ArrayList<Contact> stateContacts = cityMap.get(state);
+        if (stateContacts == null || stateContacts.isEmpty()) {
+            System.out.println("No contacts found in city: " + state);
+            return;
+        }
+
+        for (Contact contact : stateContacts) {
+            System.out.println(contact);
+        }
+    }
+
 
     //display contact from adress book
     public void displayContacts(){
