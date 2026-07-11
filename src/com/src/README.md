@@ -1,113 +1,95 @@
-# UC10 - Count Contacts by City and State
+# UC11 - Sort Contacts Alphabetically by Name
 
 ## Overview
 
-This Use Case extends the Address Book Management System by counting the number of contacts available in a specific **City** or **State**.
+This Use Case enhances the Address Book Management System by allowing users to sort contacts alphabetically based on their **First Name**.
 
-Instead of displaying all contacts, the application displays the total number of contacts associated with the given city or state.
+The application uses Java's `Collections.sort()` method along with a `Comparator` to arrange contacts in ascending alphabetical order.
 
 ---
 
 ## Objective
 
-* Count contacts by city.
-* Count contacts by state.
-* Display the total number of contacts.
-* Handle cases where no contacts exist for the given city or state.
+* Sort contacts alphabetically by first name.
+* Display contacts in ascending order.
+* Improve readability and organization of the address book.
 
 ---
 
 ## Features Implemented
 
-* Count contacts stored in the City Dictionary.
-* Count contacts stored in the State Dictionary.
-* Display the total number of contacts using `ArrayList.size()`.
-* Display an appropriate message when no contacts are found.
+* Sort contacts using `Collections.sort()`.
+* Compare contacts using `Comparator`.
+* Perform case-insensitive sorting using `compareToIgnoreCase()`.
+* Display the sorted contact list.
 
 ---
 
 ## Implementation Details
 
-### Methods Added
+### Method Added
 
 ```java
-public void countByCity(String city)
+public void sortByName()
 ```
 
-Counts the number of contacts available in the specified city.
-
-```java
-public void countByState(String state)
-```
-
-Counts the number of contacts available in the specified state.
+This method sorts the `ArrayList<Contact>` alphabetically by the contact's first name and updates the existing list.
 
 ---
 
 ## Technologies Used
 
 * Java
-* HashMap
 * ArrayList
 * Collections Framework
+* Comparator
 * Object-Oriented Programming (OOP)
 
 ---
 
 ## Learning Outcomes
 
-* Using `HashMap` to organize data.
-* Retrieving values using `get()`.
-* Checking keys using `containsKey()`.
-* Counting elements using `ArrayList.size()`.
-* Understanding constant-time lookup operations.
+* Using `Collections.sort()`
+* Implementing a `Comparator`
+* Sorting objects in an `ArrayList`
+* Performing case-insensitive string comparison
+* Organizing data efficiently
 
 ---
 
 ## Expected Output
 
-### Count by City
+### Before Sorting
 
 ```text
-Number of contacts in Belagavi : 2
-
-Number of contacts in Pune : 1
+Rahul Patil
+Aryan Pujari
+Amit Sharma
 ```
 
-### Count by State
+### After Sorting
 
 ```text
-Number of contacts in Karnataka : 2
-
-Number of contacts in Maharashtra : 1
-```
-
-### Invalid Input
-
-```text
-No contacts found in city: Goa
+Amit Sharma
+Aryan Pujari
+Rahul Patil
 ```
 
 ---
 
 ## Time Complexity
 
-| Operation     | Time Complexity |
-| ------------- | --------------- |
-| containsKey() | O(1)            |
-| get()         | O(1)            |
-| size()        | O(1)            |
-
-Overall Time Complexity: **O(1)**
+* **Time Complexity:** O(n log n)
+* **Space Complexity:** O(n)
 
 ---
 
 ## Future Enhancements
 
-* Display counts for all cities.
-* Display counts for all states.
-* Sort cities and states alphabetically.
-* Generate summary reports for the address book.
+* Sort contacts by last name.
+* Sort contacts by city.
+* Sort contacts by state.
+* Sort contacts by ZIP code.
 
 ---
 

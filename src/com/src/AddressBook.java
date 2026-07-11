@@ -1,8 +1,6 @@
 package com.src;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
 
@@ -169,6 +167,12 @@ public class AddressBook {
 
         int n=cityMap.get(state).size();
         System.out.println(n+" contancts in the "+state);
+    }
+
+    public void sortByName(){
+        Collections.sort(contacts,(a,b)->{
+            return a.getFirstName().compareTo(b.getFirstName());
+        });
     }
 
 
