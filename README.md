@@ -1,20 +1,22 @@
-# Address Book System
+# Address Book Management System
 
 ## Overview
 
-The Address Book System is a Core Java OOPs project developed as part of the BridgeLabz Java OOPs Learning Program.
+The **Address Book Management System** is a Core Java project developed as part of the **BridgeLabz Java OOPs Learning Program**. The application demonstrates Object-Oriented Programming concepts and the Java Collections Framework by implementing an address book capable of managing multiple contacts efficiently.
 
 The application allows users to:
 
-- Add a new Contact
-- Edit an existing Contact
-- Delete a Contact
+* Add a new Contact
+* Edit an existing Contact
+* Delete a Contact
+* Prevent Duplicate Contacts
+* Create Multiple Address Books
+* Search Contacts by City or State
+* View Persons by City or State
+* Count Contacts by City or State
+* Sort Contacts Alphabetically by Name
 
-The project follows Object-Oriented Programming principles using separate classes for:
-
-- Contact (Model Class)
-- AddressBook (Business Logic Class)
-- AddressBookMain (Application Entry Point)
+The project follows Object-Oriented Programming principles using separate classes for data modeling, business logic, and application execution.
 
 ---
 
@@ -27,7 +29,8 @@ src
     │
     ├── AddressBookMain.java
     ├── AddressBook.java
-    └── Contact.java
+    ├── Contact.java
+    └── AddressBookManager.java
 ```
 
 ---
@@ -36,25 +39,26 @@ src
 
 ## Contact.java
 
-Represents a single Contact in the Address Book.
+Represents a single contact in the Address Book.
 
 ### Attributes
 
-- First Name
-- Last Name
-- Address
-- City
-- State
-- Zip
-- Phone Number
-- Email
+* First Name
+* Last Name
+* Address
+* City
+* State
+* Zip
+* Phone Number
+* Email
 
 ### Features
 
-- Parameterized Constructor
-- Getters
-- Setters
-- Encapsulation using private variables
+* Parameterized Constructor
+* Getters
+* Setters
+* Encapsulation using private variables
+* Overridden `toString()` method
 
 ---
 
@@ -62,17 +66,47 @@ Represents a single Contact in the Address Book.
 
 Manages all contact-related operations.
 
-### Data Structure Used
+### Data Structures Used
 
 ```java
-ArrayList<Contact> contacts = new ArrayList<>();
+private ArrayList<Contact> contacts = new ArrayList<>();
+
+private HashMap<String, ArrayList<Contact>> cityMap = new HashMap<>();
+
+private HashMap<String, ArrayList<Contact>> stateMap = new HashMap<>();
 ```
 
 ### Responsibilities
 
-- Add Contact
-- Edit Contact
-- Delete Contact
+* Add Contact
+* Edit Contact
+* Delete Contact
+* Prevent Duplicate Contacts
+* Search Contacts by City
+* Search Contacts by State
+* View Persons by City
+* View Persons by State
+* Count Contacts by City
+* Count Contacts by State
+* Sort Contacts Alphabetically
+
+---
+
+## AddressBookManager.java
+
+Manages multiple Address Books.
+
+### Data Structure Used
+
+```java
+private HashMap<String, AddressBook> addressBooks = new HashMap<>();
+```
+
+### Responsibilities
+
+* Create a new Address Book
+* Store multiple Address Books
+* Retrieve an Address Book using its name
 
 ---
 
@@ -82,10 +116,11 @@ Acts as the entry point of the application.
 
 ### Responsibilities
 
-- Display user prompts
-- Accept user input using Scanner
-- Create Contact objects
-- Invoke AddressBook operations
+* Display user menu
+* Accept user input using Scanner
+* Create Contact objects
+* Invoke AddressBook operations
+* Manage multiple Address Books
 
 ---
 
@@ -97,20 +132,12 @@ Acts as the entry point of the application.
 
 Create a Contact class containing all required contact details.
 
-### Classes Created
-
-```text
-Contact
-AddressBook
-AddressBookMain
-```
-
 ### Concepts Used
 
-- Class
-- Object
-- Encapsulation
-- Constructor
+* Class
+* Object
+* Constructor
+* Encapsulation
 
 ---
 
@@ -118,27 +145,20 @@ AddressBookMain
 
 ### Objective
 
-Add a new Contact to the Address Book using console input.
-
-### Implementation Steps
-
-1. Accept user input from the console.
-2. Create a Contact object.
-3. Create an AddressBook object.
-4. Add the Contact to the AddressBook.
+Add a new contact to the Address Book.
 
 ### Method Added
 
 ```java
-public void addContact(Contact contact){}
+public void addContact(Contact contact)
 ```
 
 ### Concepts Used
 
-- Scanner
-- Object Creation
-- ArrayList
-- Method Invocation
+* Scanner
+* Object Creation
+* ArrayList
+* Method Invocation
 
 ---
 
@@ -146,34 +166,19 @@ public void addContact(Contact contact){}
 
 ### Objective
 
-Edit an existing Contact using First Name.
-
-### Implementation Steps
-
-1. Search Contact using First Name.
-2. Display existing Contact details.
-3. Accept updated Contact details.
-4. Update the Contact object using setter methods.
+Edit an existing contact using the First Name.
 
 ### Method Added
 
 ```java
-public void editContact(String firstName){}
-```
-
-### Search Logic
-
-```java
-for(Contact contact : contacts){}
+public void editContact(String firstName)
 ```
 
 ### Concepts Used
 
-- Enhanced For Loop
-- Searching
-- Getter Methods
-- Setter Methods
-- Object Modification
+* Searching
+* Enhanced For Loop
+* Getters and Setters
 
 ---
 
@@ -181,13 +186,7 @@ for(Contact contact : contacts){}
 
 ### Objective
 
-Delete a Contact using First Name.
-
-### Implementation Steps
-
-1. Search Contact using First Name.
-2. Remove Contact from ArrayList.
-3. Display success message.
+Delete a contact using the First Name.
 
 ### Method Added
 
@@ -195,21 +194,161 @@ Delete a Contact using First Name.
 public void deleteContact(String firstName)
 ```
 
-### Delete Logic
+### Concepts Used
+
+* ArrayList
+* Index-Based Loop
+* Remove Operation
+
+---
+
+## UC5 - Add Multiple Contacts
+
+### Objective
+
+Store multiple contacts inside an Address Book using `ArrayList`.
+
+### Concepts Used
+
+* Dynamic Collections
+* CRUD Operations
+* Enhanced For Loop
+
+---
+
+## UC6 - Create Multiple Address Books
+
+### Objective
+
+Allow users to create and manage multiple Address Books.
+
+### Data Structure Used
 
 ```java
-for(int i = 0; i < contacts.size(); i++) {
-    if(contacts.get(i).getFirstName().equalsIgnoreCase(firstName)) {
-        contacts.remove(i);
-    }
-}
+HashMap<String, AddressBook> addressBooks = new HashMap<>();
 ```
 
 ### Concepts Used
 
-- Index Based Loop
-- ArrayList Removal
-- Conditional Search
+* HashMap
+* Key-Value Mapping
+* Multiple Object Management
+
+---
+
+## UC7 - Prevent Duplicate Contacts
+
+### Objective
+
+Prevent adding duplicate contacts based on First Name and Last Name.
+
+### Method Added
+
+```java
+public boolean isDuplicate(String firstName, String lastName)
+```
+
+### Concepts Used
+
+* Searching
+* Validation
+* Case-Insensitive Comparison
+
+---
+
+## UC8 - Search Person by City or State
+
+### Objective
+
+Search contacts based on City or State.
+
+### Methods Added
+
+```java
+public void searchByCity(String city)
+
+public void searchByState(String state)
+```
+
+### Concepts Used
+
+* Filtering
+* Enhanced For Loop
+* String Comparison
+
+---
+
+## UC9 - View Persons by City or State
+
+### Objective
+
+Maintain City and State dictionaries using HashMap and display all persons belonging to a particular City or State.
+
+### Data Structures Used
+
+```java
+HashMap<String, ArrayList<Contact>> cityMap
+
+HashMap<String, ArrayList<Contact>> stateMap
+```
+
+### Methods Added
+
+```java
+public void viewPersonsByCity(String city)
+
+public void viewPersonsByState(String state)
+```
+
+### Concepts Used
+
+* HashMap
+* containsKey()
+* put()
+* get()
+* One-to-Many Mapping
+
+---
+
+## UC10 - Count Contacts by City or State
+
+### Objective
+
+Display the total number of contacts available in a specific City or State.
+
+### Methods Added
+
+```java
+public void countByCity(String city)
+
+public void countByState(String state)
+```
+
+### Concepts Used
+
+* HashMap Lookup
+* ArrayList.size()
+* Constant-Time Operations
+
+---
+
+## UC11 - Sort Contacts Alphabetically by Name
+
+### Objective
+
+Sort contacts alphabetically based on their First Name.
+
+### Method Added
+
+```java
+public void sortByName()
+```
+
+### Concepts Used
+
+* Collections.sort()
+* Comparator
+* compareToIgnoreCase()
 
 ---
 
@@ -227,8 +366,6 @@ private String zip;
 private String phone;
 private String email;
 ```
-
-Accessed using getters and setters.
 
 ---
 
@@ -253,21 +390,41 @@ Contact contact = new Contact(
 
 ```text
 AddressBook
-     │
-     └── Contact
+      │
+      └── Contact
 ```
 
 An AddressBook contains multiple Contact objects.
 
 ---
 
-## Data Storage
+# Collections Framework Used
+
+## ArrayList
 
 ```java
 ArrayList<Contact> contacts = new ArrayList<>();
 ```
 
 Used to store multiple contacts dynamically.
+
+---
+
+## HashMap
+
+```java
+HashMap<String, AddressBook> addressBooks = new HashMap<>();
+```
+
+Used to manage multiple Address Books.
+
+```java
+HashMap<String, ArrayList<Contact>> cityMap = new HashMap<>();
+
+HashMap<String, ArrayList<Contact>> stateMap = new HashMap<>();
+```
+
+Used to organize contacts based on City and State.
 
 ---
 
@@ -279,10 +436,10 @@ Used to store multiple contacts dynamically.
 bridgelabz-java-oops
 ```
 
-## Project Branch
+## Base Branch
 
 ```text
-address-book-system
+address-book-management
 ```
 
 ## Feature Branches
@@ -292,6 +449,13 @@ feature/uc1-create-contact
 feature/uc2-add-contact
 feature/uc3-edit-contact
 feature/uc4-delete-contact
+feature/uc5-add-multiple-contacts
+feature/uc6-create-address-book
+feature/uc7-prevent-duplicate-contacts
+feature/uc8-search-person-by-city-or-state
+feature/uc9-view-persons-by-city-or-state
+feature/uc10-count-contacts-by-city-and-state
+feature/uc11-sort-contacts-by-name
 ```
 
 ## Merge Flow
@@ -299,40 +463,50 @@ feature/uc4-delete-contact
 ```text
 main
 │
-└── address-book-system
-     │
-     ├── feature/uc1-create-contact
-     ├── feature/uc2-add-contact
-     ├── feature/uc3-edit-contact
-     └── feature/uc4-delete-contact
+└── address-book-management
+      │
+      ├── feature/uc1-create-contact
+      ├── feature/uc2-add-contact
+      ├── feature/uc3-edit-contact
+      ├── feature/uc4-delete-contact
+      ├── feature/uc5-add-multiple-contacts
+      ├── feature/uc6-create-address-book
+      ├── feature/uc7-prevent-duplicate-contacts
+      ├── feature/uc8-search-person-by-city-or-state
+      ├── feature/uc9-view-persons-by-city-or-state
+      ├── feature/uc10-count-contacts-by-city-and-state
+      └── feature/uc11-sort-contacts-by-name
 ```
 
-Each Use Case was implemented in a separate feature branch and merged into the Address Book project branch after successful testing.
+Each Use Case was implemented in a separate feature branch, manually tested, and merged into the `address-book-management` branch after successful verification.
 
 ---
 
 # Technologies Used
 
-- Java 21
-- IntelliJ IDEA
-- Git
-- GitHub
-- Java Collections Framework
-- Object-Oriented Programming
+* Java 21
+* IntelliJ IDEA
+* Git
+* GitHub
+* Java Collections Framework
+* Object-Oriented Programming (OOP)
 
 ---
 
 # Learning Outcomes
 
-- Understanding OOP Design
-- Working with Classes and Objects
-- Encapsulation
-- Constructor Usage
-- ArrayList Operations
-- CRUD Operations
-- Git Branching Strategy
-- Feature-Based Development Workflow
-- Console-Based Application Development
+* Object-Oriented Programming
+* Classes and Objects
+* Encapsulation
+* Constructors
+* CRUD Operations
+* ArrayList Operations
+* HashMap Operations
+* Searching and Filtering
+* Sorting Collections
+* Duplicate Validation
+* Managing Multiple Address Books
+* Feature-Based Git Workflow
 
 ---
 
