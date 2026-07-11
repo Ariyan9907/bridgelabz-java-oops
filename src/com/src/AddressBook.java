@@ -7,10 +7,12 @@ public class AddressBook {
     ArrayList<Contact> contacts = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
 
+    //add contact in addressbook
     public void addContact(Contact contact){
         contacts.add(contact);
     }
 
+    //edit contact from adressbook
     public void editContact(String firstName){
         for(Contact contact:contacts){
             if((contact.getFirstName()).equalsIgnoreCase(firstName)){
@@ -41,11 +43,15 @@ public class AddressBook {
                 contact.setEmail(sc.nextLine());
 
                 System.out.println(contact);
+                return;
 
             }
+
         }
+        System.out.println("Contact Not Found");
     }
 
+    //delete contact from addressbook
     public void deleteContact(String firstName){
         for(int i=0;i<contacts.size();i++){
             if((contacts.get(i).getFirstName()).equalsIgnoreCase(firstName)){
@@ -57,7 +63,13 @@ public class AddressBook {
         System.out.println("Contact Not Found");
     }
 
+    //display contact from adress book
     public void displayContacts(){
+        if(contacts.isEmpty()){
+            System.out.println("Address Book is Empty");
+            return;
+        }
+
         for(Contact contact:contacts){
             System.out.println(contact);
         }
