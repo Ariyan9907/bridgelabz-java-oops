@@ -1,28 +1,29 @@
-# UC7 - Prevent Duplicate Contacts
+# UC8 - Search Person by City or State
 
-## Overviews
+## Overview
 
-This Use Case enhances the Address Book Management System by preventing duplicate contacts from being added to an address book.
+This Use Case extends the Address Book Management System by allowing users to search for contacts based on their **City** or **State**.
 
-A contact is considered a duplicate if another contact already exists with the same **First Name** and **Last Name** (case-insensitive).
+The application traverses the contact list and displays all matching contacts. If no matching records are found, an appropriate message is displayed.
 
 ---
 
 ## Objective
 
-* Prevent duplicate entries in the address book.
-* Improve data consistency.
-* Demonstrate searching within an `ArrayList` before inserting data.
+* Search contacts by city.
+* Search contacts by state.
+* Display all matching contacts.
+* Handle cases where no matching contacts exist.
 
 ---
 
 ## Features Implemented
 
-* Add a new contact.
-* Check for duplicate contacts before insertion.
-* Compare first name and last name using `equalsIgnoreCase()`.
-* Display an appropriate message when a duplicate contact is detected.
-* Add the contact only if it is unique.
+* Search contacts using city name.
+* Search contacts using state name.
+* Case-insensitive search using `equalsIgnoreCase()`.
+* Display all matching contacts.
+* Display a message when no contacts are found.
 
 ---
 
@@ -31,26 +32,18 @@ A contact is considered a duplicate if another contact already exists with the s
 ### Method Added
 
 ```java
-public boolean isDuplicate(String firstName, String lastName)
+public void searchByCity(String city)
 ```
 
-This method iterates through the contact list and checks whether a contact with the same first and last name already exists.
+Searches the contact list and displays every contact whose city matches the given city name.
 
-### Updated Method
+### Method Added
 
 ```java
-public void addContact(Contact contact)
+public void searchByState(String state)
 ```
 
-Before adding the contact, the method calls `isDuplicate()`.
-
-* If a duplicate is found:
-
-    * Displays **"Contact already exists."**
-    * Does not add the contact.
-* Otherwise:
-
-    * Adds the contact successfully.
+Searches the contact list and displays every contact whose state matches the given state name.
 
 ---
 
@@ -65,36 +58,53 @@ Before adding the contact, the method calls `isDuplicate()`.
 
 ## Learning Outcomes
 
-* Searching elements in an `ArrayList`
-* Encapsulation
-* Object comparison
-* Preventing duplicate records
-* Using helper methods to improve code readability
+* Traversing collections using enhanced for-loops.
+* Filtering objects based on conditions.
+* Performing case-insensitive string comparisons.
+* Building reusable search methods.
 
 ---
 
 ## Expected Output
 
-### Valid Contact
+### Search by City
 
-```
-Contact added successfully.
+```text
+Search By City
+
+Aryan Pujari
+Rahul Patil
 ```
 
-### Duplicate Contact
+### Search by State
 
+```text
+Search By State
+
+Amit Sharma
 ```
-Contact already exists.
+
+### No Matching Contact
+
+```text
+No contact found in city: Delhi
 ```
+
+---
+
+## Time Complexity
+
+* **Search by City:** O(n)
+* **Search by State:** O(n)
 
 ---
 
 ## Future Enhancements
 
-* Prevent duplicate phone numbers.
-* Prevent duplicate email addresses.
-* Store contacts using a `HashMap` for faster lookups.
-* Search contacts by multiple fields.
+* Search using partial names.
+* Search using phone number or email.
+* Maintain separate city and state dictionaries using `HashMap` for faster lookups.
+* Implement search using Java Streams.
 
 ---
 
