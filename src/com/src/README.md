@@ -1,98 +1,141 @@
-# UC11 - Sort Contacts Alphabetically by Name
+# UC12 - Sort Contacts by City, State, and ZIP
 
 ## Overview
 
-This Use Case enhances the Address Book Management System by allowing users to sort contacts alphabetically based on their **First Name**.
+This Use Case enhances the Address Book Management System by allowing users to sort contacts based on their **City**, **State**, or **ZIP Code**.
 
-The application uses Java's `Collections.sort()` method along with a `Comparator` to arrange contacts in ascending alphabetical order.
-
----
-
-## Objective
-
-* Sort contacts alphabetically by first name.
-* Display contacts in ascending order.
-* Improve readability and organization of the address book.
+The application uses the **Java Stream API** along with the `sorted()` intermediate operation to display contacts in ascending order according to the selected field.
 
 ---
 
-## Features Implemented
+# Objective
 
-* Sort contacts using `Collections.sort()`.
-* Compare contacts using `Comparator`.
-* Perform case-insensitive sorting using `compareToIgnoreCase()`.
-* Display the sorted contact list.
+* Sort contacts by City.
+* Sort contacts by State.
+* Sort contacts by ZIP Code.
+* Display the sorted contacts.
+* Learn sorting using Java Streams.
 
 ---
 
-## Implementation Details
+# Features Implemented
 
-### Method Added
+* Sort contacts alphabetically by City.
+* Sort contacts alphabetically by State.
+* Sort contacts by ZIP Code.
+* Display sorted contacts using Java Streams.
+* Perform case-insensitive sorting for City and State.
+
+---
+
+# Implementation Details
+
+## Methods Added
+
+### Sort by City
 
 ```java
-public void sortByName()
+public void sortByCity()
 ```
 
-This method sorts the `ArrayList<Contact>` alphabetically by the contact's first name and updates the existing list.
+Sorts all contacts alphabetically based on the City.
 
 ---
 
-## Technologies Used
+### Sort by State
+
+```java
+public void sortByState()
+```
+
+Sorts all contacts alphabetically based on the State.
+
+---
+
+### Sort by ZIP
+
+```java
+public void sortByZip()
+```
+
+Sorts all contacts in ascending order based on the ZIP Code.
+
+---
+
+# Technologies Used
 
 * Java
-* ArrayList
+* Java Stream API
 * Collections Framework
 * Comparator
 * Object-Oriented Programming (OOP)
 
 ---
 
-## Learning Outcomes
+# Learning Outcomes
 
-* Using `Collections.sort()`
-* Implementing a `Comparator`
-* Sorting objects in an `ArrayList`
-* Performing case-insensitive string comparison
-* Organizing data efficiently
+* Understanding Java Streams.
+* Using `stream()` to process collections.
+* Using `sorted()` with custom comparators.
+* Using lambda expressions for sorting.
+* Performing case-insensitive comparisons using `compareToIgnoreCase()`.
 
 ---
 
-## Expected Output
+# Expected Output
 
-### Before Sorting
-
-```text
-Rahul Patil
-Aryan Pujari
-Amit Sharma
-```
-
-### After Sorting
+## Sort by City
 
 ```text
-Amit Sharma
-Aryan Pujari
-Rahul Patil
+Belagavi
+Hubli
+Pune
 ```
 
 ---
 
-## Time Complexity
+## Sort by State
 
-* **Time Complexity:** O(n log n)
-* **Space Complexity:** O(n)
-
----
-
-## Future Enhancements
-
-* Sort contacts by last name.
-* Sort contacts by city.
-* Sort contacts by state.
-* Sort contacts by ZIP code.
+```text
+Karnataka
+Karnataka
+Maharashtra
+```
 
 ---
 
-## Author
+## Sort by ZIP
+
+```text
+411001
+580020
+590002
+```
+
+---
+
+# Time Complexity
+
+| Operation | Time Complexity |
+| --------- | --------------- |
+| stream()  | O(1)            |
+| sorted()  | O(n log n)      |
+| forEach() | O(n)            |
+
+Overall Time Complexity: **O(n log n)**
+
+---
+
+# Future Enhancements
+
+* Sort by Last Name.
+* Sort by Email Address.
+* Sort by Phone Number.
+* Allow users to choose the sorting field dynamically.
+* Store the sorted result in a new collection if required.
+
+---
+
+# Author
 
 **Aryan Pujari**

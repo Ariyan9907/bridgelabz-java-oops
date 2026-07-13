@@ -175,6 +175,24 @@ public class AddressBook {
         });
     }
 
+    public void sortByCity(){
+        contacts.stream()
+                .sorted((a,b)->a.getCity().compareTo(b.getCity()))
+                .forEach(System.out::println);
+    }
+
+    public void sortByState(){
+        contacts.stream()
+                .sorted((a,b)->a.getState().compareTo(b.getState()))
+                .forEach(System.out::println);
+    }
+
+    public void sortByZip(){
+        contacts.stream()
+                .sorted((a,b)->a.getZip().compareTo(b.getZip()))
+                .forEach(System.out::println);
+    }
+
 
     //display contact from adress book
     public void displayContacts(){

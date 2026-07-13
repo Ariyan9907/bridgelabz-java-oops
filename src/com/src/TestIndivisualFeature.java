@@ -13,13 +13,13 @@ public class TestIndivisualFeature {
 
         addressBook.addContact(new Contact(
                 "Rahul", "Patil", "Camp",
-                "Belagavi", "Karnataka",
+                "Amarnath", "Karnataka",
                 "590002", "9876500000",
                 "rahul@gmail.com"));
 
         addressBook.addContact(new Contact(
                 "Amit", "Sharma", "FC Road",
-                "Pune", "Maharashtra",
+                "Pune", "Arunachal",
                 "411001", "9999999999",
                 "amit@gmail.com"));
 
@@ -27,9 +27,12 @@ public class TestIndivisualFeature {
 
         addressBook.displayContacts();
 
-        addressBook.sortByName();
+//        addressBook.sortByName();
         System.out.println("Sorted");
-        addressBook.displayContacts();
+//        addressBook.displayContacts();
+        addressBook.sortByCity();
+//        addressBook.sortByState();
+//        addressBook.sortByZip();
 
     }
 }
